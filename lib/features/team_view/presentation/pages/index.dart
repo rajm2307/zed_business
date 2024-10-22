@@ -777,7 +777,7 @@ class _TeamViewPageState extends ConsumerState<TeamViewPage> {
         centerTitle: true,
         title: Text(
           widget.appBarName!,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
       ),
       body: RefreshIndicator(
@@ -795,3 +795,5 @@ class _TeamViewPageState extends ConsumerState<TeamViewPage> {
     );
   }
 }
+
+

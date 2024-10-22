@@ -69,7 +69,137 @@ class _HomePageState extends ConsumerState<HomePage> {
                   physics: const AlwaysScrollableScrollPhysics(),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
-                    child: Column(),
+                    child: Column(
+                      children: [
+                        CarouselBanners(),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                MainServices(
+                                  label: 'Today Income',
+                                  image: 'assets/png/Totalincome.png',
+                                  money: 456.95,
+                                ),
+                                MainServices(
+                                  label: 'Today Income',
+                                  image: 'assets/png/Totalincome.png',
+                                  money: 897.99,
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                MainServices(
+                                  label: 'Today Income',
+                                  image: 'assets/png/Totalincome.png',
+                                  money: 456.95,
+                                ),
+                                MainServices(
+                                  label: 'Today Income',
+                                  image: 'assets/png/Totalincome.png',
+                                  money: 897.99,
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                MainServices(
+                                  label: 'Today Income',
+                                  image: 'assets/png/Totalincome.png',
+                                  money: 456.95,
+                                ),
+                                MainServices(
+                                  label: 'Today Income',
+                                  image: 'assets/png/Totalincome.png',
+                                  money: 897.99,
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              height: 225,
+                              width: 400,
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                color: Colors.black,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Refer & Earn',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          SizedBox(height: 10),
+                                          Text(
+                                            'Invite your friends and receive\n₹250 for each referral.',
+                                            style: TextStyle(
+                                              color: Colors.white70,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                          SizedBox(height: 15),
+                                          ElevatedButton(
+                                            onPressed: () {},
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.red,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                            ),
+                                            child: Text(
+                                              'Invite now',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(width: 20),
+                                      Image.asset(
+                                        'assets/png/giftbox.png',
+                                        height: 145,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
         ),

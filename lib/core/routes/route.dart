@@ -30,5 +30,11 @@ class AppRouter extends RootStackRouter {
       page: TeamViewRoute.page,
       transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
     ),
+
+        // ProfileAccountPage
+    CustomRoute(
+      page: ProfileAccountRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
   ];
 }
