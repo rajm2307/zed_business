@@ -29,7 +29,7 @@ class _AppState extends ConsumerState<MyApp> {
       // scaffoldMessengerKey: messengerKey,
       routeInformationParser: _appRouter.defaultRouteParser(),
       routerDelegate: _appRouter.delegate(
-        deepLinkBuilder: (deepLink) => const DeepLink([ProfileAccountRoute()]),
+        deepLinkBuilder: (deepLink) => const DeepLink([IdCardRoute()]),
       ),
       // title: AppConstants.app,
       // themeMode: darkTheme ? ThemeMode.dark : ThemeMode.light,
@@ -38,6 +38,3 @@ class _AppState extends ConsumerState<MyApp> {
     );
   }
 }
-
-
-

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class Primarybutton extends StatefulWidget {
   final String buttonText;
   final VoidCallback onButtonPressed;
-  final Color? backgroundColor; 
-  final TextStyle? textStyle; 
+  final Color? backgroundColor;
+  final TextStyle? textStyle;
 
   const Primarybutton({
     super.key,
@@ -24,17 +24,18 @@ class _PrimarybuttonState extends State<Primarybutton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 345,
+      width: double.infinity,
       height: 55,
       child: TextButton(
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all<Color>(
-              widget.backgroundColor ?? const Color.fromRGBO(36, 62, 76, 1)),
+              widget.backgroundColor ?? const Color.fromRGBO(185, 62, 29, 1)),
         ),
         onPressed: widget.onButtonPressed,
         child: Text(
           widget.buttonText,
-          style: widget.textStyle ?? const TextStyle(color: Colors.white, fontSize: 18),
+          style: widget.textStyle ??
+              const TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
     );

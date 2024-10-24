@@ -55,6 +55,15 @@ class _TeamPageState extends ConsumerState<TeamPage> {
       "time": "12:45:09"
     },
     {
+      "level": "3",
+      "name": "Sunnuy Kahrwar",
+      "package": "Free",
+      "rank": "Not Achieved",
+      "sponsor": "CLASEYHDH",
+      "date": "30/03/2024",
+      "time": "12:45:09"
+    },
+    {
       "level": "1",
       "name": "Raj Mandal",
       "package": "Paid",
@@ -72,7 +81,51 @@ class _TeamPageState extends ConsumerState<TeamPage> {
       "date": "30/03/2024",
       "time": "12:45:09"
     },
-    
+    {
+      "level": "2",
+      "name": "Vikram Baital",
+      "package": "Paid",
+      "rank": "Not Achieved",
+      "sponsor": "CLASEYHDH",
+      "date": "30/03/2024",
+      "time": "12:45:09"
+    },
+    {
+      "level": "4",
+      "name": "Vikram Singh",
+      "package": "Paid",
+      "rank": "Not Achieved",
+      "sponsor": "CLASEYHDH",
+      "date": "30/03/2024",
+      "time": "12:45:09"
+    },
+    {
+      "level": "4",
+      "name": "Vikram Maharana",
+      "package": "Paid",
+      "rank": "Not Achieved",
+      "sponsor": "CLASEYHDH",
+      "date": "30/03/2024",
+      "time": "12:45:09"
+    },
+    {
+      "level": "4",
+      "name": "Vikram Maharana",
+      "package": "Free",
+      "rank": "Not Achieved",
+      "sponsor": "CLASEYHDH",
+      "date": "30/03/2024",
+      "time": "12:45:09"
+    },
+    {
+      "level": "4",
+      "name": "Vikram Maharana",
+      "package": "Free",
+      "rank": "Not Achieved",
+      "sponsor": "CLASEYHDH",
+      "date": "30/03/2024",
+      "time": "12:45:09"
+    },
   ];
 
   @override
@@ -115,6 +168,8 @@ class _TeamPageState extends ConsumerState<TeamPage> {
   Widget build(BuildContext context) {
     final route = ref.read(routeService);
 
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(230, 230, 230, 1),
       appBar: AppBar(
@@ -148,7 +203,11 @@ class _TeamPageState extends ConsumerState<TeamPage> {
                             GestureDetector(
                               onTap: () {
                                 route.push(
-                                    TeamViewRoute(appBarName: 'Total Free', level: -1, userStatus: 0, fetchDay: 'All'),
+                                    TeamViewRoute(
+                                        appBarName: 'Total Free',
+                                        level: -1,
+                                        userStatus: 0,
+                                        fetchDay: 'All'),
                                     context);
                               },
                               child: Container(
@@ -186,7 +245,11 @@ class _TeamPageState extends ConsumerState<TeamPage> {
                             GestureDetector(
                               onTap: () {
                                 route.push(
-                                    TeamViewRoute(appBarName: 'Total Paid', level: -1, userStatus: 0, fetchDay: 'All'),
+                                    TeamViewRoute(
+                                        appBarName: 'Total Paid',
+                                        level: -1,
+                                        userStatus: 0,
+                                        fetchDay: 'All'),
                                     context);
                               },
                               child: Container(
@@ -225,7 +288,11 @@ class _TeamPageState extends ConsumerState<TeamPage> {
                             GestureDetector(
                               onTap: () {
                                 route.push(
-                                    TeamViewRoute(appBarName: 'Total Team', level: -1, userStatus: 0, fetchDay: 'All'),
+                                    TeamViewRoute(
+                                        appBarName: 'Total Team',
+                                        level: -1,
+                                        userStatus: 0,
+                                        fetchDay: 'All'),
                                     context);
                               },
                               child: Container(
@@ -425,23 +492,14 @@ class _TeamPageState extends ConsumerState<TeamPage> {
                                               BorderRadius.circular(5)),
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 4, vertical: 6),
-                                      // child: Text(
-                                      //     (_getTeamCount(_totalTeam, i, 'Free') +
-                                      //             _getTeamCount(
-                                      //                 _totalTeam, i, 'Prime') +
-                                      //             _getTeamCount(_totalTeam, i,
-                                      //                 'Super Prime'))
-                                      //         .toString(),
-                                      //     textAlign: TextAlign.center,
-                                      //     style: teamText.copyWith(
-                                      //         color: blackColor)),
                                       child: Text(
-                                        "0",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: const Color.fromARGB(
-                                                255, 255, 255, 255)),
-                                      ),
+                                          (_getTeamCount(teamData, i, 'Free') +
+                                                  _getTeamCount(
+                                                      teamData, i, 'Paid'))
+                                              .toString(),
+                                          textAlign: TextAlign.center,
+                                          style:
+                                              TextStyle(color: Colors.white)),
                                     ),
                                   ),
                                 ])

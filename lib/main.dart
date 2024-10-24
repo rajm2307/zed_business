@@ -24,6 +24,80 @@ void main() async {
 
 
 
+// import 'dart:io';
+// import 'dart:typed_data';
+// import 'dart:ui';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/rendering.dart';
+// import 'package:path_provider/path_provider.dart';
+// import 'package:share_plus/share_plus.dart';
+
+// class ScreenshotShareWidget extends StatefulWidget {
+//   @override
+//   _ScreenshotShareWidgetState createState() => _ScreenshotShareWidgetState();
+// }
+
+// class _ScreenshotShareWidgetState extends State<ScreenshotShareWidget> {
+//   GlobalKey _globalKey = GlobalKey(); // Key to identify the widget to capture
+
+//   // Method to capture screenshot
+//   Future<void> _captureAndSharePng() async {
+//     try {
+//       // Capturing the widget image
+//       RenderRepaintBoundary boundary = _globalKey.currentContext
+//           ?.findRenderObject() as RenderRepaintBoundary;
+//       var image = await boundary.toImage();
+//       ByteData? byteData = await image.toByteData(format: ImageByteFormat.png);
+//       Uint8List pngBytes = byteData!.buffer.asUint8List();
+
+//       // Saving the screenshot to a temporary directory
+//       final tempDir = await getTemporaryDirectory();
+//       final file = await File('${tempDir.path}/screenshot.png').create();
+//       await file.writeAsBytes(pngBytes);
+
+//       // Assuming `file` is a File instance or obtained from ImagePicker, etc.
+//       XFile xFile = XFile(file.path);
+
+//       // Sharing the screenshot
+//       await Share.shareXFiles([xFile], text: 'Check out my screenshot!');
+
+//       // Sharing the screenshot
+//       // await Share.shareXFiles([file.path], text: 'Check out my screenshot!');
+//     } catch (e) {
+//       print("Error while capturing screenshot: $e");
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text("Screenshot & Share")),
+//       body: Center(
+//         child: RepaintBoundary(
+//           key: _globalKey, // This is the widget that will be captured
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               Text(
+//                 'This is the widget to be captured!',
+//                 style: TextStyle(fontSize: 20),
+//               ),
+//               ElevatedButton(
+//                 onPressed: _captureAndSharePng,
+//                 child: Text('Share Screenshot'),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+
+
+
 
 // import 'dart:async';
 

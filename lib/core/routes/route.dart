@@ -31,9 +31,21 @@ class AppRouter extends RootStackRouter {
       transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
     ),
 
-        // ProfileAccountPage
+    // ProfileAccountPage
     CustomRoute(
       page: ProfileAccountRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+    // QrCodePage
+    CustomRoute(
+      page: QrCodeRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+        // IdCardPage
+    CustomRoute(
+      page: IdCardRoute.page,
       transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
     ),
   ];

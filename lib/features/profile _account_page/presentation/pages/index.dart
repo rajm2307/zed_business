@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:zed_business/core/styles/buttons/primary_button.dart';
 import 'package:zed_business/core/styles/text.style.dart';
+import 'package:intl/intl.dart'; // Add intl package to format the date
 
 @RoutePage()
 class ProfileAccountPage extends ConsumerStatefulWidget {
@@ -19,7 +21,14 @@ class ProfileAccountPage extends ConsumerStatefulWidget {
 }
 
 class _ProfileAccountPageState extends ConsumerState<ProfileAccountPage> {
-  File? pickedImage; // Store the selected image file
+  File? pickedImage;
+  DateTime? selectedDate;
+  String? selectedGender;
+
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _districtController = TextEditingController();
+  final TextEditingController _stateController = TextEditingController();
+  final TextEditingController _pincodeController = TextEditingController();
 
   // Image picker logic
   Future<void> pickImage(ImageSource imageType) async {
@@ -120,16 +129,25 @@ class _ProfileAccountPageState extends ConsumerState<ProfileAccountPage> {
     );
   }
 
+  // Function to show the date picker
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900), // Earliest date you can select
+      lastDate: DateTime(2100), // Latest date you can select
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        scrolledUnderElevation: 10.0,
-        toolbarHeight: 60,
-        iconTheme: IconThemeData(
-          color: Colors.white,
-        ),
-        centerTitle: true,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
@@ -199,49 +217,28 @@ class _ProfileAccountPageState extends ConsumerState<ProfileAccountPage> {
                     ],
                   ),
                 ),
-
+                SizedBox(
+                  height: 50,
+                ),
                 Container(
-                  padding: EdgeInsets.all(15),
+                  padding:
+                      EdgeInsets.only(top: 25, bottom: 25, right: 15, left: 15),
                   decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 255, 255, 255),
-                      border: Border(),
-                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
                   child: Column(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                              bottom:
-                                  BorderSide(color: Colors.grey, width: 0.5)),
-                        ),
-                        child: ListTile(
-                          minVerticalPadding: 22,
-                          leading: SvgPicture.asset(
-                            "assets/svg/ic_baseline-history.svg",
-                            width: 30,
-                            height: 30,
-                            fit: BoxFit.cover,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Personal Details',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                color: Color.fromRGBO(0, 0, 0, 1)),
                           ),
-                          title: Row(
-                            children: [
-                              Text(
-                                "SUNNY KHARWAR",
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              const Spacer(),
-                              const Icon(
-                                Icons.chevron_right,
-                                size: 25,
-                                color: Color.fromRGBO(0, 0, 0, 1),
-                              ),
-                            ],
-                          ),
-                          onTap: () {
-                            // print('${service['text']} tapped');
-                          },
-                        ),
+                        ],
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -257,28 +254,18 @@ class _ProfileAccountPageState extends ConsumerState<ProfileAccountPage> {
                             height: 30,
                             fit: BoxFit.cover,
                           ),
-                          title: Row(
-                            children: [
-                              Text(
-                                "SUNNY KHARWAR",
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              const Spacer(),
-                              const Icon(
-                                Icons.chevron_right,
-                                size: 25,
-                                color: Color.fromRGBO(0, 0, 0, 1),
-                              ),
-                            ],
+                          title: Text(
+                            "ZP 234556",
+                            style: const TextStyle(
+                                color: Colors.red, fontWeight: FontWeight.w600),
                           ),
                           onTap: () {
-                            // print('${service['text']} tapped');
+                            print('tapped');
                           },
                         ),
                       ),
                       Container(
+                        margin: EdgeInsets.only(top: 20),
                         decoration: BoxDecoration(
                           border: Border(
                               bottom:
@@ -292,56 +279,303 @@ class _ProfileAccountPageState extends ConsumerState<ProfileAccountPage> {
                             height: 30,
                             fit: BoxFit.cover,
                           ),
-                          title: Row(
-                            children: [
-                              Text(
-                                "SUNNY KHARWAR",
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              const Spacer(),
-                              const Icon(
-                                Icons.chevron_right,
-                                size: 25,
-                                color: Color.fromRGBO(0, 0, 0, 1),
-                              ),
-                            ],
+                          title: Text(
+                            "Sunny Kharwar",
+                            style: AppTextStyles.appCaptionText(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.red,
+                            ).copyWith(fontSize: 16),
                           ),
                           onTap: () {
                             // print('${service['text']} tapped');
                           },
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        decoration: BoxDecoration(
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.grey, width: 0.5)),
+                        ),
+                        child: ListTile(
+                          minVerticalPadding: 22,
+                          leading: SvgPicture.asset(
+                            "assets/svg/ic_baseline-history.svg",
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.cover,
+                          ),
+                          title: Text(
+                            "8459186035",
+                            style: AppTextStyles.appCaptionText(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.red,
+                            ).copyWith(fontSize: 16),
+                          ),
+                          onTap: () {
+                            // print('${service['text']} tapped');
+                          },
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        decoration: BoxDecoration(
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.grey, width: 0.5)),
+                        ),
+                        child: ListTile(
+                          minVerticalPadding: 22,
+                          leading: SvgPicture.asset(
+                            "assets/svg/ic_baseline-history.svg",
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.cover,
+                          ),
+                          title: Text(
+                            "testsunny234@gmail.com",
+                            style: AppTextStyles.appCaptionText(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.red,
+                            ).copyWith(fontSize: 16),
+                          ),
+                          onTap: () {
+                            // print('${service['text']} tapped');
+                          },
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        decoration: BoxDecoration(
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.grey, width: 0.5)),
+                        ),
+                        child: ListTile(
+                          leading: SvgPicture.asset(
+                            "assets/svg/ic_baseline-history.svg",
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.cover,
+                          ),
+                          title: Text(
+                            selectedDate != null
+                                ? DateFormat('dd/MM/yyyy')
+                                    .format(selectedDate!) // Show selected date
+                                : 'Select Date of birth', // Default text when no date is selected
+                            style: selectedDate != null
+                                ? TextStyle(
+                                    // color: Colors
+                                    //     .black, // Style for the selected date
+                                    fontSize: 16, fontWeight: FontWeight.w600,
+                                    color: Colors.red,
+                                  )
+                                : TextStyle(
+                                    color: Color.fromARGB(255, 152, 152,
+                                        152), // Style for "Select Date of birth"
+                                    fontSize: 16,
+                                  ),
+                          ),
+                          onTap: () => _selectDate(context),
+                        ),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(top: 20),
+                          decoration: BoxDecoration(
+                            border: Border(
+                                bottom:
+                                    BorderSide(color: Colors.grey, width: 0.5)),
+                          ),
+                          child: ListTile(
+                            leading: SvgPicture.asset(
+                              "assets/svg/ic_baseline-history.svg",
+                              width: 30,
+                              height: 30,
+                              fit: BoxFit.cover,
+                            ),
+                            title: DropdownButtonFormField<String>(
+                              decoration:
+                                  InputDecoration.collapsed(hintText: ''),
+                              value: selectedGender,
+                              hint: Text(
+                                'Select Gender',
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 152, 152,
+                                        152), // Style for "Select Date of birth"
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              icon: Icon(Icons.arrow_drop_down,
+                                  color: Colors.black), // Dropdown icon
+                              items: ['Male', 'Female', 'Others']
+                                  .map((gender) => DropdownMenuItem<String>(
+                                        value: gender,
+                                        child: Text(gender,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.red,
+                                            )),
+                                      ))
+                                  .toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedGender = newValue;
+                                });
+                              },
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+                Container(
+                  padding:
+                      EdgeInsets.only(top: 25, bottom: 25, right: 15, left: 15),
+                  decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Address Details',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                color: Color.fromRGBO(0, 0, 0, 1)),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        decoration: BoxDecoration(
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.grey, width: 0.5)),
+                        ),
+                        child: ListTile(
+                          leading: SvgPicture.asset(
+                            "assets/svg/ic_baseline-history.svg",
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.cover,
+                          ),
+                          title: TextField(
+                            controller: _addressController,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Enter Address",
+                              hintStyle: TextStyle(
+                                  color: Color.fromARGB(255, 152, 152,
+                                      152), // Style for "Select Date of birth"
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            // onChanged: _validateUserId,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        decoration: BoxDecoration(
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.grey, width: 0.5)),
+                        ),
+                        child: ListTile(
+                          leading: SvgPicture.asset(
+                            "assets/svg/ic_baseline-history.svg",
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.cover,
+                          ),
+                          title: TextField(
+                            controller: _districtController,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Enter District",
+                              hintStyle: TextStyle(
+                                  color: Color.fromARGB(255, 152, 152,
+                                      152), // Style for "Select Date of birth"
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            // onChanged: _validateUserId,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        decoration: BoxDecoration(
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.grey, width: 0.5)),
+                        ),
+                        child: ListTile(
+                          leading: SvgPicture.asset(
+                            "assets/svg/ic_baseline-history.svg",
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.cover,
+                          ),
+                          title: TextField(
+                            controller: _stateController,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Enter State",
+                              hintStyle: TextStyle(
+                                  color: Color.fromARGB(255, 152, 152,
+                                      152), // Style for "Select Date of birth"
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            // onChanged: _validateUserId,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        decoration: BoxDecoration(
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.grey, width: 0.5)),
+                        ),
+                        child: ListTile(
+                          leading: SvgPicture.asset(
+                            "assets/svg/ic_baseline-history.svg",
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.cover,
+                          ),
+                          title: TextField(
+                            keyboardType: TextInputType.number,
+                            controller: _pincodeController,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Enter Pin Code",
+                              hintStyle: TextStyle(
+                                  color: Color.fromARGB(255, 152, 152,
+                                      152), // Style for "Select Date of birth"
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            // onChanged: _validateUserId,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-
-                // Static Logout ListTile
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(color: Colors.grey, width: 0.5)),
-                  ),
-                  child: ListTile(
-                    minVerticalPadding: 22,
-                    leading: SvgPicture.asset(
-                      "assets/svg/logout.svg",
-                      width: 30,
-                      height: 30,
-                      fit: BoxFit.cover,
-                    ),
-                    title: Text(
-                      'Logout',
-                      style: AppTextStyles.appCaptionText(
-                              fontWeight: FontWeight.w400)
-                          .copyWith(fontSize: 16),
-                    ),
-                    onTap: () {
-                      print('Logout tapped');
-                    },
-                  ),
+                SizedBox(
+                  height: 45,
                 ),
+                Primarybutton(buttonText: "Update", onButtonPressed: () {}),
               ],
             ),
           ),
