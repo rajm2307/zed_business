@@ -30,9 +30,9 @@ class _MoneyTransferPagePageState extends ConsumerState<MoneyTransferPage> {
     final route = ref.read(routeService);
     super.initState();
 
-    Timer(const Duration(seconds: 200), () {
+    Timer(const Duration(milliseconds: 2700), () {
       if (mounted) {
-        route.replace(HomeRoute(), context);
+        route.replace(WithdrawalRoute(), context);
       }
     });
   }
@@ -61,7 +61,7 @@ class _MoneyTransferPagePageState extends ConsumerState<MoneyTransferPage> {
             height: 10,
           ),
           Text(
-            " ${widget.selectedText} transfer is\nSuccessfully Done! ",
+            " ${widget.selectedText} is\nSuccessfully Done! ",
             textAlign: TextAlign.center,
             style: AppTextStyles.appCaptionText(
                     color: const Color.fromARGB(255, 0, 0, 0),
@@ -73,3 +73,6 @@ class _MoneyTransferPagePageState extends ConsumerState<MoneyTransferPage> {
     );
   }
 }
+
+
+

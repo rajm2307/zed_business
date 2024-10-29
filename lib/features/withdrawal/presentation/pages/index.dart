@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zed_business/core/routes/route.gr.dart';
 import 'package:zed_business/core/styles/buttons/primary_button.dart';
+import 'package:zed_business/features/transactionHistory/presentation/pages/index.dart';
 import 'package:zed_business/services/provider.dart';
 
 @RoutePage()
@@ -34,9 +35,15 @@ class _WithdrawalPageState extends ConsumerState<WithdrawalPage> {
   ) {
     final int? userAmount = int.tryParse(value);
 
-    if (isCommissionSelected?( userAmount != null &&  userAmount >= 500 && selectTransferMethodofcommission != null) : ( userAmount != null && userAmount >= 500 && selectTransferMethodoffund != null)) {
+    if (isCommissionSelected
+        ? (userAmount != null &&
+            userAmount >= 500 &&
+            selectTransferMethodofcommission != null)
+        : (userAmount != null &&
+            userAmount >= 500 &&
+            selectTransferMethodoffund != null)) {
       setState(() {
-        backgroundColor =  Colors.red;
+        backgroundColor = Colors.red;
         textStyle = const TextStyle(color: Colors.white);
       });
     } else {
@@ -79,7 +86,9 @@ class _WithdrawalPageState extends ConsumerState<WithdrawalPage> {
             content: Text('Please enter amount more than 500'),
           ),
         );
-      } else if (isCommissionSelected? selectTransferMethodofcommission == null : selectTransferMethodoffund == null) {
+      } else if (isCommissionSelected
+          ? selectTransferMethodofcommission == null
+          : selectTransferMethodoffund == null) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Please select transfer method '),
@@ -109,7 +118,7 @@ class _WithdrawalPageState extends ConsumerState<WithdrawalPage> {
           child: Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.19,
+                height: MediaQuery.of(context).size.height * 0.10,
               ),
               Center(
                 child: Container(
@@ -150,6 +159,7 @@ class _WithdrawalPageState extends ConsumerState<WithdrawalPage> {
                             onTap: () {
                               setState(() {
                                 isCommissionSelected = true;
+                                _validateUser(_amountcontroller1.text);
                               });
                             },
                           ),
@@ -159,6 +169,7 @@ class _WithdrawalPageState extends ConsumerState<WithdrawalPage> {
                             onTap: () {
                               setState(() {
                                 isCommissionSelected = false;
+                                _validateUser(_amountcontroller2.text);
                               });
                             },
                           ),
@@ -179,8 +190,28 @@ class _WithdrawalPageState extends ConsumerState<WithdrawalPage> {
               Primarybutton(
                 onButtonPressed: checkUserInputs,
                 buttonText: 'Procced to Pay',
-                backgroundColor:  backgroundColor,
+                backgroundColor: backgroundColor,
                 textStyle: textStyle,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
+              ),
+              GestureDetector(
+                onTap: () {
+                  final route = ref.read(routeService);
+                  route.push(
+                      TransactionHistoryRoute(
+                          isCommissionSelected:
+                              isCommissionSelected ? true : false),
+                      context);
+                },
+                child: Text(
+                  "View History",
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14),
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
@@ -228,8 +259,7 @@ class _WithdrawalPageState extends ConsumerState<WithdrawalPage> {
           ),
           // onChanged: _validateUser,
           onChanged: (value) {
-            _validateUser(
-                value); // Call the validation whenever amount changes
+            _validateUser(value); // Call the validation whenever amount changes
           },
         ),
         SizedBox(
@@ -327,8 +357,7 @@ class _WithdrawalPageState extends ConsumerState<WithdrawalPage> {
           ),
           // onChanged: _validateUser,
           onChanged: (value) {
-            _validateUser(
-                value); // Call the validation whenever amount changes
+            _validateUser(value); // Call the validation whenever amount changes
           },
         ),
         SizedBox(

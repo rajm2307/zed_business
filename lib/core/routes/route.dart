@@ -78,5 +78,17 @@ class AppRouter extends RootStackRouter {
       page: MoneyTransferRoute.page,
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
+
+    // TransactionHistoryPage
+    CustomRoute(
+      page: TransactionHistoryRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+    // TransactionDetailsPage
+    CustomRoute(
+      page: TransactionDetailsRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
   ];
 }
