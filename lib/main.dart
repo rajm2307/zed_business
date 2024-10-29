@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zed_business/my_app.dart';
+// import 'package:zed_business/my_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,70 +23,100 @@ void main() async {
 }
 
 
-
-// import 'dart:io';
-// import 'dart:typed_data';
-// import 'dart:ui';
 // import 'package:flutter/material.dart';
-// import 'package:flutter/rendering.dart';
-// import 'package:path_provider/path_provider.dart';
-// import 'package:share_plus/share_plus.dart';
 
-// class ScreenshotShareWidget extends StatefulWidget {
+// class WalletSelector extends StatefulWidget {
 //   @override
-//   _ScreenshotShareWidgetState createState() => _ScreenshotShareWidgetState();
+//   _WalletSelectorState createState() => _WalletSelectorState();
 // }
 
-// class _ScreenshotShareWidgetState extends State<ScreenshotShareWidget> {
-//   GlobalKey _globalKey = GlobalKey(); // Key to identify the widget to capture
-
-//   // Method to capture screenshot
-//   Future<void> _captureAndSharePng() async {
-//     try {
-//       // Capturing the widget image
-//       RenderRepaintBoundary boundary = _globalKey.currentContext
-//           ?.findRenderObject() as RenderRepaintBoundary;
-//       var image = await boundary.toImage();
-//       ByteData? byteData = await image.toByteData(format: ImageByteFormat.png);
-//       Uint8List pngBytes = byteData!.buffer.asUint8List();
-
-//       // Saving the screenshot to a temporary directory
-//       final tempDir = await getTemporaryDirectory();
-//       final file = await File('${tempDir.path}/screenshot.png').create();
-//       await file.writeAsBytes(pngBytes);
-
-//       // Assuming `file` is a File instance or obtained from ImagePicker, etc.
-//       XFile xFile = XFile(file.path);
-
-//       // Sharing the screenshot
-//       await Share.shareXFiles([xFile], text: 'Check out my screenshot!');
-
-//       // Sharing the screenshot
-//       // await Share.shareXFiles([file.path], text: 'Check out my screenshot!');
-//     } catch (e) {
-//       print("Error while capturing screenshot: $e");
-//     }
-//   }
+// class _WalletSelectorState extends State<WalletSelector> {
+//   bool isCommissionSelected = true; // Track selected option
 
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
-//       appBar: AppBar(title: Text("Screenshot & Share")),
+//       backgroundColor: Colors.grey[300],
 //       body: Center(
-//         child: RepaintBoundary(
-//           key: _globalKey, // This is the widget that will be captured
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               Text(
-//                 'This is the widget to be captured!',
-//                 style: TextStyle(fontSize: 20),
+//         child: Padding(
+//           padding: const EdgeInsets.symmetric(horizontal: 20.0),
+//           child: Container(
+//             height: 60.0,
+//             width: 390.0,
+//             padding: EdgeInsets.all(5.0),
+//             decoration: BoxDecoration(
+//               color: Colors.white,
+//               borderRadius: BorderRadius.circular(10.0),
+//             ),
+//             child: Stack(
+//               children: [
+//                 // Animated positioned indicator
+//                 AnimatedPositioned(
+//                   duration: Duration(milliseconds: 200),
+//                   curve: Curves.easeInOut,
+//                   left: isCommissionSelected ? 0 : 195, // Animate position
+//                   right: isCommissionSelected ? 195 : 0,
+//                   child: Container(
+//                     height: 50.0,
+//                     decoration: BoxDecoration(
+//                       color: Colors.red,
+//                       borderRadius: BorderRadius.circular(5.0),
+//                     ),
+//                   ),
+//                 ),
+//                 Row(
+//                   mainAxisAlignment: MainAxisAlignment.center,
+//                   crossAxisAlignment: CrossAxisAlignment.center,
+//                   children: [
+//                     _buildOption(
+//                       title: "Commission Wallet",
+//                       isSelected: isCommissionSelected,
+//                       onTap: () {
+//                         setState(() {
+//                           isCommissionSelected = true;
+//                         });
+//                       },
+//                     ),
+//                     _buildOption(
+//                       title: "Fund Wallet",
+//                       isSelected: !isCommissionSelected,
+//                       onTap: () {
+//                         setState(() {
+//                           isCommissionSelected = false;
+//                         });
+//                       },
+//                     ),
+//                   ],
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+//   // Builds each option with text style depending on selection state
+//   Widget _buildOption({
+//     required String title,
+//     required bool isSelected,
+//     required VoidCallback onTap,
+//   }) {
+//     return Expanded(
+//       child: GestureDetector(
+//         onTap: onTap,
+//         child: Center(
+//           child: Container(
+//             height: 40.0,
+//             alignment: Alignment.center,
+//             child: Text(
+//               title,
+//               style: TextStyle(
+//                 color: isSelected ? Colors.white : Colors.red,
+//                 fontSize: 16.0,
+//                 fontWeight: FontWeight.w400,
 //               ),
-//               ElevatedButton(
-//                 onPressed: _captureAndSharePng,
-//                 child: Text('Share Screenshot'),
-//               ),
-//             ],
+//             ),
 //           ),
 //         ),
 //       ),
@@ -94,6 +124,15 @@ void main() async {
 //   }
 // }
 
+// void main() {
+//   runApp(MaterialApp(home: WalletSelector()));
+// }
+
+
+
+
+
+// _____________________________________________________________________________________________________________________________________
 
 
 
@@ -373,50 +412,5 @@ void main() async {
 //   }
 // }
 
-
-
-
-// class OpenDrawer extends StatefulWidget {
-//   const OpenDrawer({super.key});
-//   @override
-//   _OpenDrawerState createState() => _OpenDrawerState();
-// }
-
-// class _OpenDrawerState extends State<OpenDrawer> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Drawer(
-//       child: ListView(
-//         padding: EdgeInsets.zero,
-//         children: drawerItems.map((item) {
-//           return ListTile(
-//             leading: SvgPicture.asset(
-//               item.iconPath,
-//               width: 30,
-//               height: 30,
-//               fit: BoxFit.cover,
-//             ),
-//             title: Row(
-//               children: [
-//                 Text(
-//                   item.title,
-//                   style: const TextStyle(
-//                       color: Colors.black, fontWeight: FontWeight.w400),
-//                 ),
-//                 const Spacer(),
-//                 const Icon(
-//                   Icons.chevron_right,
-//                   size: 25,
-//                   color: Color.fromRGBO(0, 0, 0, 1),
-//                 ),
-//               ],
-//             ),
-//             onTap: item.onTap,
-//           );
-//         }).toList(),
-//       ),
-//     );
-//   }
-// }
 
 

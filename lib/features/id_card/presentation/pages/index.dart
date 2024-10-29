@@ -21,40 +21,24 @@ class IdCardPage extends ConsumerStatefulWidget {
 
 class _IdCardPageState extends ConsumerState<IdCardPage> {
   File? pickedImage;
-  DateTime? selectedDate;
-  String? selectedGender;
-  GlobalKey _globalKey = GlobalKey(); // Key to identify the widget to capture
 
-  final String businessId =
-      "ZP 237462"; // Business ID to be displayed and copied
-
-  // Method to capture screenshot
-  Future<void> _captureAndSharePng() async {
-    try {
-      // Capturing the widget image
-      RenderRepaintBoundary boundary = _globalKey.currentContext
-          ?.findRenderObject() as RenderRepaintBoundary;
-      var image = await boundary.toImage(
-          pixelRatio: 3.0); // Adjust pixelRatio for higher resolution
-      ByteData? byteData = await image.toByteData(format: ImageByteFormat.png);
-      Uint8List pngBytes = byteData!.buffer.asUint8List();
-
-      // Saving the screenshot to a temporary directory
-      final tempDir = await getTemporaryDirectory();
-      final file = await File('${tempDir.path}/screenshot.png').create();
-      await file.writeAsBytes(pngBytes);
-
-      // Assuming `file` is a File instance or obtained from ImagePicker, etc.
-      XFile xFile = XFile(file.path);
-
-      // Sharing the screenshot
-      await Share.shareXFiles([xFile], text: 'Check out my screenshot!');
-
-      // Sharing the screenshot
-      // await Share.shareXFiles([file.path], text: 'Check out my screenshot!');
-    } catch (e) {
-      print("Error while capturing screenshot: $e");
-    }
+  _rowSection(label, value) {
+    return Padding(
+        padding: const EdgeInsets.only(bottom: 5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              label,
+              style: TextStyle(
+                  fontWeight: FontWeight.w500, color: Colors.pink[700]),
+            ),
+            Text(
+              "$value",
+              style: TextStyle(fontWeight: FontWeight.w500),
+            )
+          ],
+        ));
   }
 
   @override
@@ -70,13 +54,87 @@ class _IdCardPageState extends ConsumerState<IdCardPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 213,
-                color: Colors.green,
+                height: 460,
+                clipBehavior: Clip.antiAlias,
+                width: 315,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(5))),
                 child: Column(
                   children: [
                     Image.asset(
                       'assets/png/top_shape.png',
                       // height: 185,
+                    ),
+                    Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                            ),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(100)),
+                          ),
+                          child: ClipOval(
+                            child: pickedImage != null
+                                ? Image.file(
+                                    pickedImage!,
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.network(
+                                    'https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01,
+                        ),
+                        Text(
+                          'Sunny Kharwar',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                              color: Color.fromRGBO(0, 0, 0, 1)),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.001,
+                        ),
+                        const Text(
+                          "Free Member",
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsets.only(right: 70, left: 70, top: 30),
+                          child: Column(
+                            children: [
+                              _rowSection(
+                                'User ID :',
+                                'ZP 237462',
+                              ),
+                              _rowSection(
+                                'Mobile :',
+                                '9345005407',
+                              ),
+                              _rowSection(
+                                'Date :',
+                                '10/08/24',
+                              )
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                     Spacer(),
                     Image.asset(

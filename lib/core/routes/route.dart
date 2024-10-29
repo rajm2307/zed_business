@@ -43,10 +43,40 @@ class AppRouter extends RootStackRouter {
       transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
     ),
 
-        // IdCardPage
+    // IdCardPage
     CustomRoute(
       page: IdCardRoute.page,
       transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+    // BankKYCPage
+    CustomRoute(
+      page: BankKYCRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+    // GalleryPage
+    CustomRoute(
+      page: GalleryRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+    // ScannerPage
+    CustomRoute(
+      page: ScannerRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+    // WithdrawalPage
+    CustomRoute(
+      page: WithdrawalRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+    // MoneyTransferPage
+    CustomRoute(
+      page: MoneyTransferRoute.page,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
   ];
 }

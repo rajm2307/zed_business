@@ -7,7 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:zed_business/core/styles/buttons/primary_button.dart';
 import 'package:zed_business/core/styles/text.style.dart';
-import 'package:intl/intl.dart'; // Add intl package to format the date
+import 'package:intl/intl.dart';
 
 @RoutePage()
 class ProfileAccountPage extends ConsumerStatefulWidget {
@@ -584,3 +584,62 @@ class _ProfileAccountPageState extends ConsumerState<ProfileAccountPage> {
     );
   }
 }
+
+
+// DropdownButtonFormField<String>(
+//   decoration: InputDecoration(
+//     contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+//     labelText: 'Select Gender',
+//     labelStyle: TextStyle(
+//       fontWeight: FontWeight.w400,
+//       color: const Color.fromARGB(255, 199, 199, 199),
+//     ),
+//     filled: true,
+//     fillColor: Colors.white,
+//     border: OutlineInputBorder(
+//       borderRadius: BorderRadius.circular(8),
+//       borderSide: const BorderSide(
+//         color: Colors.grey,
+//         width: 0.3,
+//       ),
+//     ),
+//     enabledBorder: OutlineInputBorder(
+//       borderRadius: BorderRadius.circular(8),
+//       borderSide: const BorderSide(
+//         color: Colors.grey,
+//         width: 0.3,
+//       ),
+//     ),
+//   ),
+//   value: selectTransferMethod,
+//   hint: Text(
+//     'Select Gender',
+//     style: TextStyle(
+//       color: Color.fromARGB(255, 152, 152, 152), // Style for "Select Gender"
+//       fontSize: 16,
+//       fontWeight: FontWeight.w600,
+//     ),
+//   ),
+//   icon: Icon(
+//     Icons.arrow_drop_down,
+//     color: Colors.black, // Dropdown icon color
+//   ),
+//   items: ['Male', 'Female', 'Others'].map((gender) {
+//     return DropdownMenuItem<String>(
+//       value: gender,
+//       child: Text(
+//         gender,
+//         style: TextStyle(
+//           fontSize: 16,
+//           fontWeight: FontWeight.w600,
+//           color: Colors.red,
+//         ),
+//       ),
+//     );
+//   }).toList(),
+//   onChanged: (value) {
+//     setState(() {
+//       selectTransferMethod = value;
+//     });
+//   },
+// )

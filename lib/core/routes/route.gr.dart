@@ -8,27 +8,108 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:flutter/material.dart' as _i9;
-import 'package:zed_business/features/homePage/presentation/pages/index.dart'
+import 'package:auto_route/auto_route.dart' as _i13;
+import 'package:flutter/material.dart' as _i14;
+import 'package:zed_business/features/bank_kyc/presentation/pages/index.dart'
     as _i1;
-import 'package:zed_business/features/id_card/presentation/pages/index.dart'
+import 'package:zed_business/features/gallery/presentation/pages/index.dart'
     as _i2;
-import 'package:zed_business/features/profile%20_account_page/presentation/pages/index.dart'
+import 'package:zed_business/features/homePage/presentation/pages/index.dart'
     as _i3;
-import 'package:zed_business/features/profile/presentation/pages/index.dart'
+import 'package:zed_business/features/id_card/presentation/pages/index.dart'
     as _i4;
-import 'package:zed_business/features/qr_code/presentation/pages/index.dart'
+import 'package:zed_business/features/moneytransfer/presentation/pages/index.dart'
     as _i5;
-import 'package:zed_business/features/team/presentation/pages/index.dart'
+import 'package:zed_business/features/profile%20_account_page/presentation/pages/index.dart'
     as _i6;
-import 'package:zed_business/features/team_view/presentation/pages/index.dart'
+import 'package:zed_business/features/profile/presentation/pages/index.dart'
     as _i7;
+import 'package:zed_business/features/qr_code/presentation/pages/index.dart'
+    as _i8;
+import 'package:zed_business/features/scanner/presentation/pages/index.dart'
+    as _i9;
+import 'package:zed_business/features/team/presentation/pages/index.dart'
+    as _i10;
+import 'package:zed_business/features/team_view/presentation/pages/index.dart'
+    as _i11;
+import 'package:zed_business/features/withdrawal/presentation/pages/index.dart'
+    as _i12;
 
 /// generated route for
-/// [_i1.HomePage]
-class HomeRoute extends _i8.PageRouteInfo<void> {
-  const HomeRoute({List<_i8.PageRouteInfo>? children})
+/// [_i1.BankKYCPage]
+class BankKYCRoute extends _i13.PageRouteInfo<BankKYCRouteArgs> {
+  BankKYCRoute({
+    _i14.Key? key,
+    required String? userID,
+    required String? fullName,
+    List<_i13.PageRouteInfo>? children,
+  }) : super(
+          BankKYCRoute.name,
+          args: BankKYCRouteArgs(
+            key: key,
+            userID: userID,
+            fullName: fullName,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'BankKYCRoute';
+
+  static _i13.PageInfo page = _i13.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<BankKYCRouteArgs>();
+      return _i1.BankKYCPage(
+        key: args.key,
+        userID: args.userID,
+        fullName: args.fullName,
+      );
+    },
+  );
+}
+
+class BankKYCRouteArgs {
+  const BankKYCRouteArgs({
+    this.key,
+    required this.userID,
+    required this.fullName,
+  });
+
+  final _i14.Key? key;
+
+  final String? userID;
+
+  final String? fullName;
+
+  @override
+  String toString() {
+    return 'BankKYCRouteArgs{key: $key, userID: $userID, fullName: $fullName}';
+  }
+}
+
+/// generated route for
+/// [_i2.GalleryPage]
+class GalleryRoute extends _i13.PageRouteInfo<void> {
+  const GalleryRoute({List<_i13.PageRouteInfo>? children})
+      : super(
+          GalleryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'GalleryRoute';
+
+  static _i13.PageInfo page = _i13.PageInfo(
+    name,
+    builder: (data) {
+      return const _i2.GalleryPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i3.HomePage]
+class HomeRoute extends _i13.PageRouteInfo<void> {
+  const HomeRoute({List<_i13.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -36,18 +117,18 @@ class HomeRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      return const _i1.HomePage();
+      return const _i3.HomePage();
     },
   );
 }
 
 /// generated route for
-/// [_i2.IdCardPage]
-class IdCardRoute extends _i8.PageRouteInfo<void> {
-  const IdCardRoute({List<_i8.PageRouteInfo>? children})
+/// [_i4.IdCardPage]
+class IdCardRoute extends _i13.PageRouteInfo<void> {
+  const IdCardRoute({List<_i13.PageRouteInfo>? children})
       : super(
           IdCardRoute.name,
           initialChildren: children,
@@ -55,18 +136,70 @@ class IdCardRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'IdCardRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      return const _i2.IdCardPage();
+      return const _i4.IdCardPage();
     },
   );
 }
 
 /// generated route for
-/// [_i3.ProfileAccountPage]
-class ProfileAccountRoute extends _i8.PageRouteInfo<void> {
-  const ProfileAccountRoute({List<_i8.PageRouteInfo>? children})
+/// [_i5.MoneyTransferPage]
+class MoneyTransferRoute extends _i13.PageRouteInfo<MoneyTransferRouteArgs> {
+  MoneyTransferRoute({
+    _i14.Key? key,
+    required _i14.TextEditingController amountController,
+    required String? selectedText,
+    List<_i13.PageRouteInfo>? children,
+  }) : super(
+          MoneyTransferRoute.name,
+          args: MoneyTransferRouteArgs(
+            key: key,
+            amountController: amountController,
+            selectedText: selectedText,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MoneyTransferRoute';
+
+  static _i13.PageInfo page = _i13.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<MoneyTransferRouteArgs>();
+      return _i5.MoneyTransferPage(
+        key: args.key,
+        amountController: args.amountController,
+        selectedText: args.selectedText,
+      );
+    },
+  );
+}
+
+class MoneyTransferRouteArgs {
+  const MoneyTransferRouteArgs({
+    this.key,
+    required this.amountController,
+    required this.selectedText,
+  });
+
+  final _i14.Key? key;
+
+  final _i14.TextEditingController amountController;
+
+  final String? selectedText;
+
+  @override
+  String toString() {
+    return 'MoneyTransferRouteArgs{key: $key, amountController: $amountController, selectedText: $selectedText}';
+  }
+}
+
+/// generated route for
+/// [_i6.ProfileAccountPage]
+class ProfileAccountRoute extends _i13.PageRouteInfo<void> {
+  const ProfileAccountRoute({List<_i13.PageRouteInfo>? children})
       : super(
           ProfileAccountRoute.name,
           initialChildren: children,
@@ -74,18 +207,18 @@ class ProfileAccountRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'ProfileAccountRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      return const _i3.ProfileAccountPage();
+      return const _i6.ProfileAccountPage();
     },
   );
 }
 
 /// generated route for
-/// [_i4.ProfilePage]
-class ProfileRoute extends _i8.PageRouteInfo<void> {
-  const ProfileRoute({List<_i8.PageRouteInfo>? children})
+/// [_i7.ProfilePage]
+class ProfileRoute extends _i13.PageRouteInfo<void> {
+  const ProfileRoute({List<_i13.PageRouteInfo>? children})
       : super(
           ProfileRoute.name,
           initialChildren: children,
@@ -93,18 +226,18 @@ class ProfileRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'ProfileRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      return const _i4.ProfilePage();
+      return const _i7.ProfilePage();
     },
   );
 }
 
 /// generated route for
-/// [_i5.QrCodePage]
-class QrCodeRoute extends _i8.PageRouteInfo<void> {
-  const QrCodeRoute({List<_i8.PageRouteInfo>? children})
+/// [_i8.QrCodePage]
+class QrCodeRoute extends _i13.PageRouteInfo<void> {
+  const QrCodeRoute({List<_i13.PageRouteInfo>? children})
       : super(
           QrCodeRoute.name,
           initialChildren: children,
@@ -112,18 +245,37 @@ class QrCodeRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'QrCodeRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      return const _i5.QrCodePage();
+      return const _i8.QrCodePage();
     },
   );
 }
 
 /// generated route for
-/// [_i6.TeamPage]
-class TeamRoute extends _i8.PageRouteInfo<void> {
-  const TeamRoute({List<_i8.PageRouteInfo>? children})
+/// [_i9.ScannerPage]
+class ScannerRoute extends _i13.PageRouteInfo<void> {
+  const ScannerRoute({List<_i13.PageRouteInfo>? children})
+      : super(
+          ScannerRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ScannerRoute';
+
+  static _i13.PageInfo page = _i13.PageInfo(
+    name,
+    builder: (data) {
+      return const _i9.ScannerPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i10.TeamPage]
+class TeamRoute extends _i13.PageRouteInfo<void> {
+  const TeamRoute({List<_i13.PageRouteInfo>? children})
       : super(
           TeamRoute.name,
           initialChildren: children,
@@ -131,24 +283,24 @@ class TeamRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'TeamRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      return const _i6.TeamPage();
+      return const _i10.TeamPage();
     },
   );
 }
 
 /// generated route for
-/// [_i7.TeamViewPage]
-class TeamViewRoute extends _i8.PageRouteInfo<TeamViewRouteArgs> {
+/// [_i11.TeamViewPage]
+class TeamViewRoute extends _i13.PageRouteInfo<TeamViewRouteArgs> {
   TeamViewRoute({
-    _i9.Key? key,
+    _i14.Key? key,
     required String appBarName,
     required int level,
     required int userStatus,
     required String fetchDay,
-    List<_i8.PageRouteInfo>? children,
+    List<_i13.PageRouteInfo>? children,
   }) : super(
           TeamViewRoute.name,
           args: TeamViewRouteArgs(
@@ -163,11 +315,11 @@ class TeamViewRoute extends _i8.PageRouteInfo<TeamViewRouteArgs> {
 
   static const String name = 'TeamViewRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<TeamViewRouteArgs>();
-      return _i7.TeamViewPage(
+      return _i11.TeamViewPage(
         key: args.key,
         appBarName: args.appBarName,
         level: args.level,
@@ -187,7 +339,7 @@ class TeamViewRouteArgs {
     required this.fetchDay,
   });
 
-  final _i9.Key? key;
+  final _i14.Key? key;
 
   final String appBarName;
 
@@ -201,4 +353,23 @@ class TeamViewRouteArgs {
   String toString() {
     return 'TeamViewRouteArgs{key: $key, appBarName: $appBarName, level: $level, userStatus: $userStatus, fetchDay: $fetchDay}';
   }
+}
+
+/// generated route for
+/// [_i12.WithdrawalPage]
+class WithdrawalRoute extends _i13.PageRouteInfo<void> {
+  const WithdrawalRoute({List<_i13.PageRouteInfo>? children})
+      : super(
+          WithdrawalRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WithdrawalRoute';
+
+  static _i13.PageInfo page = _i13.PageInfo(
+    name,
+    builder: (data) {
+      return const _i12.WithdrawalPage();
+    },
+  );
 }

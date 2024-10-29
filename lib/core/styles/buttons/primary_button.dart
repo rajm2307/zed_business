@@ -29,14 +29,14 @@ class _PrimarybuttonState extends State<Primarybutton> {
       child: TextButton(
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all<Color>(
-              widget.backgroundColor ?? const Color.fromRGBO(185, 62, 29, 1)),
+              widget.backgroundColor ?? Colors.red),
         ),
         onPressed: widget.onButtonPressed,
         child: Text(
           widget.buttonText,
           style: widget.textStyle ??
               const TextStyle(color: Colors.white, fontSize: 18),
-        ),
+        ), 
       ),
     );
   }
