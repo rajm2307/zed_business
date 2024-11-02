@@ -19,9 +19,9 @@ class AppRouter extends RootStackRouter {
       transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
     ),
 
-    // TeamPage
+    // MyTeamPage
     CustomRoute(
-      page: TeamRoute.page,
+      page: MyTeamRoute.page,
       transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
     ),
 
@@ -89,6 +89,24 @@ class AppRouter extends RootStackRouter {
     CustomRoute(
       page: TransactionDetailsRoute.page,
       transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+    // PaymentPage
+    CustomRoute(
+      page: PaymentRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+    // AppPage
+    CustomRoute(
+      page: AppRoute.page,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+
+    // NotificationPage
+    CustomRoute(
+      page: NotificationRoute.page,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
   ];
 }

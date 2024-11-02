@@ -6,7 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zed_business/core/routes/route.gr.dart';
 import 'package:zed_business/core/styles/buttons/primary_button.dart';
-import 'package:zed_business/features/transactionHistory/presentation/pages/index.dart';
+import 'package:zed_business/features/withdrawal_/transactionHistory/presentation/pages/index.dart';
 import 'package:zed_business/services/provider.dart';
 
 @RoutePage()

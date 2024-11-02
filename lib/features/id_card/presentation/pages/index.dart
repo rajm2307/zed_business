@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:path_provider/path_provider.dart';
 
 @RoutePage()
 class IdCardPage extends ConsumerStatefulWidget {
@@ -24,7 +22,7 @@ class _IdCardPageState extends ConsumerState<IdCardPage> {
 
   _rowSection(label, value) {
     return Padding(
-        padding: const EdgeInsets.only(bottom: 5),
+        padding: const EdgeInsets.only(bottom: 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -54,7 +52,7 @@ class _IdCardPageState extends ConsumerState<IdCardPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 460,
+                height: 480,
                 clipBehavior: Clip.antiAlias,
                 width: 315,
                 decoration: BoxDecoration(
@@ -124,11 +122,15 @@ class _IdCardPageState extends ConsumerState<IdCardPage> {
                                 'ZP 237462',
                               ),
                               _rowSection(
-                                'Mobile :',
+                                'Status  :',
+                                'Super Prime',
+                              ),
+                              _rowSection(
+                                'Mobile  :',
                                 '9345005407',
                               ),
                               _rowSection(
-                                'Date :',
+                                'Date      :',
                                 '10/08/24',
                               )
                             ],

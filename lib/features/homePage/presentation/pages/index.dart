@@ -12,7 +12,7 @@ import 'package:zed_business/features/homePage/presentation/logic/others/homepag
 class HomePage extends ConsumerStatefulWidget {
   static var page;
 
-  const HomePage({super.key});
+  const HomePage({super.key, required GlobalKey<ScaffoldState> keyToOpenDrawer, required Null Function() onViewAll});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _HomePageState();

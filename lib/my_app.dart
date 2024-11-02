@@ -29,7 +29,7 @@ class _AppState extends ConsumerState<MyApp> {
       // scaffoldMessengerKey: messengerKey,
       routeInformationParser: _appRouter.defaultRouteParser(),
       routerDelegate: _appRouter.delegate(
-        deepLinkBuilder: (deepLink) => DeepLink([WithdrawalRoute()]),
+        deepLinkBuilder: (deepLink) => DeepLink([AppRoute( title: 'Page')]),
       ),
       // title: AppConstants.app,
       // themeMode: darkTheme ? ThemeMode.dark : ThemeMode.light,
