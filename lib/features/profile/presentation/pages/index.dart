@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:zed_business/core/routes/route.gr.dart';
 import 'package:zed_business/core/styles/text.style.dart';
+import 'package:zed_business/services/provider.dart';
 
 @RoutePage()
 class ProfilePage extends ConsumerStatefulWidget {
@@ -23,50 +25,62 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
           {
             "text": "QR COde",
             "icon": "assets/svg/ph_qr-code-fill.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "ID Card",
             "icon": "assets/svg/solar_user-id-bold.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "Bank KYC",
             "icon": "assets/svg/mdi_bank.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "All History",
             "icon": "assets/svg/ic_baseline-history.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "Gallery",
             "icon": "assets/svg/solar_gallery-bold.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "PDF & Video",
             "icon": "assets/svg/bxs_file-pdf.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "About Us",
             "icon": "assets/svg/bxs_file-pdf.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "Terms & Conditions",
             "icon": "assets/svg/bxs_file-pdf.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "Privacy & Policy",
             "icon": "assets/svg/bxs_file-pdf.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "Help Center",
             "icon": "assets/svg/bxs_file-pdf.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "Rate Us",
             "icon": "assets/svg/bxs_file-pdf.svg",
+            "route": HistoryRoute(),
           },
           {
             "text": "Settings",
             "icon": "assets/svg/bxs_file-pdf.svg",
+            "route": HistoryRoute(),
           },
         ],
       },
@@ -186,7 +200,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                           ],
                         ),
                         onTap: () {
-                          print('${service['text']} tapped');
+                          final route = ref.read(routeService);
+                          route.push(service['route'], context);
+
+                          // print('${service['text']} tapped');
                         },
                       ),
                     );

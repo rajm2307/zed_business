@@ -5,6 +5,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zed_business/core/routes/route.gr.dart';
 import 'package:zed_business/features/Notification/presentation/pages/index.dart';
+import 'package:zed_business/features/others/add_fund.dart';
+import 'package:zed_business/features/payment/presentation/pages/index.dart';
+import 'package:zed_business/features/profile%20_account_page/presentation/pages/index.dart';
 import 'package:zed_business/features/team/presentation/pages/index.dart';
 // import 'package:zed_business/core/utils/app_color_const.dart';
 import 'package:zed_business/features/homePage/presentation/pages/index.dart';
@@ -41,8 +44,10 @@ class _AppPageState extends State<AppPage> {
         },
       ),
       TeamPage(),
-      const NotificationPage(),
-      const ProfilePage()
+      ProfilePage(),
+      PaymentPage(
+        ratePayment: 456.55,
+      )
     ];
     super.initState();
   }

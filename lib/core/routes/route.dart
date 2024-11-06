@@ -106,7 +106,19 @@ class AppRouter extends RootStackRouter {
     // NotificationPage
     CustomRoute(
       page: NotificationRoute.page,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+    // AddFundPaymentPage
+    CustomRoute(
+      page: AddFundPaymentRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+    ),
+
+        // HistoryPage
+    CustomRoute(
+      page: HistoryRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
     ),
   ];
 }
